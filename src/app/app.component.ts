@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
 import { ProductsComponent } from './components/products/products.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FormsModule, ProductsComponent],
+  imports: [FormsModule, ProductsComponent, NavComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
