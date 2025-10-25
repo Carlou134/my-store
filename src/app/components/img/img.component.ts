@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, AfterViewInit, OnDestroy } from '@angular/core';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -8,16 +8,39 @@ import { NgIf } from '@angular/common';
   templateUrl: './img.component.html',
   styleUrl: './img.component.scss'
 })
-export class ImgComponent implements OnInit {
+export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   @Input() img:string = "valor inicial";
   @Output() loaded = new EventEmitter<string>();
 
   imageDefault = 'default.png';
 
-  constructor() {}
+  constructor() {
+    // before render
+    // NO async -- once time
+    console.log("constructor", 'imgValue => ', this.img);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // before - during render
+    // changes inputs -- times
+    console.log("ngOnChanges", 'imgValue => ', this.img);
+  }
 
   ngOnInit(){
+    // before render
+    // async - fetch -- once time
+    console.log("ngOnInit", 'imgValue => ', this.img);
+  }
 
+  ngAfterViewInit(): void {
+    //after render
+    //handler children
+    console.log("ngAfterViewInit");
+  }
+
+  ngOnDestroy(): void {
+      // delete
+      console.log("ngOnDestroy");
   }
 
   imgError() {
