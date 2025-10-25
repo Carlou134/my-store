@@ -4,11 +4,12 @@ import { Product } from '../../models/product.model';
 import { DatePipe, NgForOf, UpperCasePipe } from '@angular/common';
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
+import { TimeAgoPipe } from '../../pipes/time-ago.pipe';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ ProductComponent, NgForOf, DatePipe, UpperCasePipe],
+  imports: [ ProductComponent, NgForOf, DatePipe, UpperCasePipe, TimeAgoPipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
