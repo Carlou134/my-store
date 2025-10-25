@@ -12,9 +12,11 @@ import { ImgComponent } from "../img/img.component";
 export class ProductComponent implements OnInit {
   @Input() product: Product= {
     id: 0,
-    name: '',
+    title: '',
     price: 0,
-    image: ''
+    image: '',
+    description: '',
+    category: ''
   };
   @Output() addedProduct = new EventEmitter<Product>();
 
