@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, output, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -8,11 +8,13 @@ import { NgIf } from '@angular/common';
   templateUrl: './img.component.html',
   styleUrl: './img.component.scss'
 })
-export class ImgComponent {
+export class ImgComponent implements OnInit {
   @Input() img:string = "valor inicial";
   @Output() loaded = new EventEmitter<string>();
 
   imageDefault = 'default.png';
+
+  constructor() {}
 
   ngOnInit(){
 
