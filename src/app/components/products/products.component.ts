@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductComponent } from '../product/product.component';
 import { Product } from '../../models/product.model';
 import { NgForOf } from '@angular/common';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-products',
@@ -34,12 +35,14 @@ export class ProductsComponent implements OnInit{
     }
   ]
 
-  constructor() {}
+  constructor(private storeService: StoreService) {
+    this.myShoppingCart = this.storeService.getShoppingCart();
+  }
 
   ngOnInit(): void {}
 
   onAddToShoppingCart(product: Product){
-    this.myShoppingCart.push(product);
-    this.total = this.myShoppingCart.reduce((sum, item) => sum + item.price, 0);
+    this.storeService.addProduct(product);
+    this.total = this.storeService.getTotal();
   }
 }
