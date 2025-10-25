@@ -24,7 +24,7 @@ export class ImgComponent {
 
   imgLoaded(){
     console.log('log hijo');
-    this.loaded.emit("Imagen Cargada");
+    this.loaded.emit(this.img);
   }
 
 }
