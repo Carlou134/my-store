@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ImgComponent } from "../img/img.component";
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [ImgComponent],
+  imports: [ImgComponent, CurrencyPipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
