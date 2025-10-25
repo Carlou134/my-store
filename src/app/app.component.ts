@@ -12,4 +12,8 @@ import { FormsModule, NgModel } from '@angular/forms';
 })
 export class AppComponent {
   imgParent = '';
+
+  onLoaded(img: string){
+    console.log("log padre" + img);
+  }
 }

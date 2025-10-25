@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input, output, Output, EventEmitter } from '@angular/core';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -10,5 +10,21 @@ import { NgIf } from '@angular/common';
 })
 export class ImgComponent {
   @Input() img:string = "valor inicial";
+  @Output() loaded = new EventEmitter<string>();
+
+  imageDefault = 'default.png';
+
+  ngOnInit(){
+
+  }
+
+  imgError() {
+    this.img = this.imageDefault;
+  }
+
+  imgLoaded(){
+    console.log('log hijo');
+    this.loaded.emit("Imagen Cargada");
+  }
 
 }
