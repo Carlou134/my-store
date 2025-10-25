@@ -1,1 +1,5 @@
-<p>img works!</p>
+<img width="200" [src]="img" alt="Imagen" *ngIf="img; else elseImg">
+<ng-template #elseImg>
+  <img src="default.png" alt="imagen por defecto">
+</ng-template>
+
