@@ -3,17 +3,18 @@ import { ImgComponent } from './components/img/img.component';
 import { FormsModule } from '@angular/forms';
 import { ProductComponent } from './components/product/product.component';
 import { Product } from './models/product.model';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ImgComponent, FormsModule, ProductComponent, NgForOf],
+  imports: [ImgComponent, FormsModule, ProductComponent, NgForOf, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   imgParent = '';
+  showImg = true;
   products: Product[] = [
     {
         id: 1,
@@ -37,5 +38,9 @@ export class AppComponent {
 
   onLoaded(img: string){
     console.log("log padre" + img);
+  }
+
+  toggleImg(){
+    this.showImg = !this.showImg;
   }
 }
