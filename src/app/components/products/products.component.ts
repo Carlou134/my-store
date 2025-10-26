@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { StoreService } from './../../services/store.service';
+import { Component, inject, OnInit } from '@angular/core';
 import { ProductComponent } from '../product/product.component';
 import { Product } from '../../models/product.model';
 import { DatePipe, NgForOf, UpperCasePipe } from '@angular/common';
-import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
 import { TimeAgoPipe } from '../../pipes/time-ago.pipe';
 
@@ -20,7 +20,10 @@ export class ProductsComponent implements OnInit{
   today = new Date();
   date = new Date(2021, 1, 21);
 
-  constructor(private storeService: StoreService, private productsService:ProductsService) {
+  private storeService = inject(StoreService);
+  private productsService = inject(ProductsService);
+
+  constructor() {
     this.myShoppingCart = this.storeService.getShoppingCart();
   }
 

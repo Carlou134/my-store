@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product.model';
 
@@ -6,8 +6,7 @@ import { Product } from '../models/product.model';
   providedIn: 'root'
 })
 export class ProductsService {
-
-  constructor(private http:HttpClient) { }
+  private http = inject(HttpClient);
 
   getAllProducts(){
     return this.http.get<Product[]>('https://fakestoreapi.com/products');

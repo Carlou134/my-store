@@ -11,8 +11,6 @@ export class StoreService {
   private myCart = new BehaviorSubject<Product[]>([]);
   myCart$ = this.myCart.asObservable();
 
-  constructor() { }
-
   addProduct(product: Product){
     this.myShoppingCart.push(product);
     this.myCart.next(this.myShoppingCart);

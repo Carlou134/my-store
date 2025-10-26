@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ImgComponent } from "../img/img.component";
 import { CurrencyPipe } from '@angular/common';
@@ -12,7 +12,7 @@ import { HighlightDirective } from "../../directives/highlight.directive";
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent {
   @Input() product: Product= {
     id: 0,
     title: '',
@@ -22,10 +22,6 @@ export class ProductComponent implements OnInit {
     category: ''
   };
   @Output() addedProduct = new EventEmitter<Product>();
-
-  constructor() {}
-
-  ngOnInit(){}
 
   onAddToCart(){
     this.addedProduct.emit(this.product);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { StoreService } from '../../services/store.service';
 
 @Component({
@@ -13,9 +13,7 @@ export class NavComponent implements OnInit {
   activeMenu = false;
   counter = 0;
 
-  constructor(
-    private storeService:StoreService
-  ) {}
+  private storeService = inject(StoreService);
 
   ngOnInit(): void {
     this.storeService.myCart$.subscribe(products => {
