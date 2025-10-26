@@ -3,11 +3,12 @@ import { Product } from '../../models/product.model';
 import { ImgComponent } from "../img/img.component";
 import { CurrencyPipe } from '@angular/common';
 import { ReversePipe } from '../../pipes/reverse.pipe';
+import { HighlightDirective } from "../../directives/highlight.directive";
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [ImgComponent, CurrencyPipe, ReversePipe],
+  imports: [ImgComponent, CurrencyPipe, ReversePipe, HighlightDirective],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
