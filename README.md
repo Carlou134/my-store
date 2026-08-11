@@ -1,27 +1,51 @@
 # MyStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.4.
+> A small online store built with Angular to practice core framework concepts: components, inputs/outputs, lifecycle hooks, custom pipes, directives, and services consuming a real API.
 
-## Development server
+![demo](docs/screenshots/home.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 🧩 Problem / Context
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Learning project to get hands-on with Angular fundamentals beyond tutorials: component communication, reactivity, custom pipes/directives, and consuming a public REST API — while progressively adding linting and good practices.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🛠️ Stack
 
-## Running unit tests
+| Layer      | Technology                          |
+|------------|--------------------------------------|
+| Frontend   | Angular 18 (standalone components)   |
+| HTTP       | Angular HttpClient + [Fake Store API](https://fakestoreapi.com/) |
+| Testing    | Karma + Jasmine                      |
+| Linting    | ESLint + angular-eslint              |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 🏗️ Architecture
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Standalone components (no NgModules) for `nav`, `products`, `product`, and `img`.
+- `ProductsService` isolates HTTP access to the Fake Store API from the components.
+- Custom pipes (`reverse`, `time-ago`) and a custom `highlight` directive built from scratch to understand the underlying APIs instead of relying on Angular Material/CDK.
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🧠 Technical challenges & decisions
+
+- **Problem:** Needed to understand data flow between parent/child components → **Solution:** Practiced `@Input`/`@Output` and lifecycle hooks (`ngOnInit`, `ngOnChanges`) manually in the `product`/`products` components → **Why:** Building this by hand (instead of jumping to signals/state libraries) makes the underlying change-detection mechanics clear.
+- **Problem:** Wanted real reactive behavior beyond static mock data → **Solution:** Consumed the public Fake Store API via `HttpClient` in `ProductsService` → **Why:** Working against a real async source surfaces loading/error states that mock arrays hide.
+- **Problem:** Repetition and inconsistent style creeping into components → **Solution:** Introduced ESLint + angular-eslint → **Why:** Establish good practices early rather than retrofitting linting on a bigger codebase later.
+
+---
+
+## 🚀 How to run it
+
+```bash
+git clone https://github.com/Carlou134/my-store.git
+cd my-store
+pnpm install
+pnpm start
+```
+
+Then open `http://localhost:4200/`.
